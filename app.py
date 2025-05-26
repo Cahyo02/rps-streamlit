@@ -20,9 +20,15 @@ Upload gambar tangan membentuk **rock (batu)**, **paper (kertas)**, atau **sciss
 Aplikasi ini akan mengklasifikasikannya secara otomatis menggunakan model CNN.
 """)
 
+def download_model(url, namefile):
+    response = requests.get(url)
+    with open(namefile, 'wb') as f:
+        f.write(response.content)
+        
 # Prediction function
 def predict(image_file):
     classifier_model = "rps-dicoding.h5"
+    model_url = 'https://github.com/FariskaRatna/Rock-paper-scissors-Dicoding-ML/releases/download/v1_rps/rps-dicoding.h5'
 
     model = load_model(classifier_model)
 
